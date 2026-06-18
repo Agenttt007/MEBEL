@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог кроватей</title>
     <style>
+        /* ===== ИМПОРТ ШРИФТОВ ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,114 +15,199 @@
         }
         
         body {
-            background: #f8f5f2;
+            background: #f5f0eb;
             padding: 20px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: #1e1a16;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1440px;
             margin: 0 auto;
             background: #ffffff;
-            border-radius: 32px;
-            padding: 30px 24px 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-radius: 40px;
+            padding: 40px 32px 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
         }
         
+        /* ===== ДЕКОРАТИВНЫЙ ЭЛЕМЕНТ ===== */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(220, 200, 185, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        /* ===== ШАПКА ===== */
         .catalog-header {
             text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
             border-bottom: 2px solid #f0ebe6;
+            position: relative;
+        }
+        
+        .catalog-header .subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #b8a99b;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
         
         .catalog-header h1 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
             font-weight: 700;
+            color: #1e1a16;
+            letter-spacing: -0.02em;
+        }
+        
+        .catalog-header h1 span {
+            color: #c4a882;
         }
         
         .catalog-header p {
-            color: #6b5f55;
-            margin-top: 4px;
+            color: #8d7f73;
+            font-size: 1.1rem;
+            margin-top: 6px;
+            font-weight: 300;
         }
         
+        .header-decoration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 14px;
+        }
+        
+        .header-decoration .line {
+            width: 40px;
+            height: 2px;
+            background: #c4a882;
+        }
+        
+        .header-decoration .diamond {
+            width: 8px;
+            height: 8px;
+            background: #c4a882;
+            transform: rotate(45deg);
+        }
+        
+        /* ===== ФИЛЬТРЫ ===== */
         .filters {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
         
         .filter-btn {
-            padding: 8px 24px;
-            border: 2px solid #f0ebe6;
-            border-radius: 40px;
+            padding: 10px 28px;
+            border: 2px solid #e8e0d8;
+            border-radius: 50px;
             background: transparent;
             cursor: pointer;
-            transition: all 0.25s ease;
-            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 0.9rem;
+            font-weight: 500;
             color: #4a3f38;
+            font-family: 'Inter', sans-serif;
+            position: relative;
         }
         
         .filter-btn:hover {
-            border-color: #1e1a16;
+            border-color: #c4a882;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 168, 130, 0.2);
         }
         
         .filter-btn.active {
             background: #1e1a16;
             color: #fff;
             border-color: #1e1a16;
+            box-shadow: 0 4px 16px rgba(30, 26, 22, 0.25);
         }
         
+        .filter-btn .count {
+            display: none;
+        }
+        
+        /* ===== СЕТКА ===== */
         .catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 28px 20px;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px 24px;
             margin-bottom: 40px;
         }
         
+        /* ===== КАРТОЧКА (премиум) ===== */
         .product-card {
             background: #ffffff;
-            border-radius: 20px;
-            padding: 18px 16px 20px;
+            border-radius: 24px;
+            padding: 20px 20px 24px;
             border: 1px solid #f0ebe6;
-            transition: all 0.25s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
         .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            border-color: #ddd5cc;
         }
         
+        /* ===== ИЗОБРАЖЕНИЕ ===== */
         .product-image {
             width: 100%;
             aspect-ratio: 1 / 1;
-            border-radius: 16px;
-            margin-bottom: 16px;
+            border-radius: 18px;
+            margin-bottom: 18px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #e8e0d8;
+            background-color: #f0ebe6;
             background-image: url('bed.jpg');
+            position: relative;
+            overflow: hidden;
         }
         
+        .product-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* ===== БЕЙДЖИ ===== */
         .badge-group {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .badge {
-            font-size: 0.7rem;
-            font-weight: 600;
+            font-size: 0.65rem;
+            font-weight: 700;
             padding: 4px 14px;
             border-radius: 50px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .badge-discount {
@@ -137,43 +225,179 @@
             color: #1f6e4a;
         }
         
+        /* ===== НАЗВАНИЕ ===== */
         .product-name {
-            font-weight: 500;
-            font-size: 1.05rem;
-            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
             flex-grow: 1;
+            line-height: 1.3;
+            color: #1e1a16;
         }
         
+        .product-name .highlight {
+            color: #c4a882;
+        }
+        
+        /* ===== РЕЙТИНГ (декоративный) ===== */
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            color: #b8a99b;
+            margin-bottom: 8px;
+        }
+        
+        .product-rating .stars {
+            color: #f5b342;
+            letter-spacing: 1px;
+        }
+        
+        .product-rating .reviews {
+            color: #b8a99b;
+        }
+        
+        /* ===== ЦЕНА ===== */
         .product-price {
             font-weight: 700;
-            font-size: 1.3rem;
-            padding-top: 12px;
-            border-top: 1px solid #f0ebe6;
-            margin-top: 8px;
+            font-size: 1.4rem;
+            color: #1e1a16;
+            padding-top: 14px;
+            border-top: 2px solid #f5f0eb;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
-        .product-price small {
+        .product-price .current {
+            color: #1e1a16;
+        }
+        
+        .product-price .old {
             font-weight: 400;
-            font-size: 0.8rem;
-            color: #a89b8f;
-            margin-left: 8px;
-        }
-        
-        .product-price small s {
+            font-size: 0.85rem;
+            color: #b8a99b;
+            text-decoration: line-through;
             text-decoration-color: #b34a3a;
         }
         
+        .product-price .price-discount {
+            font-size: 0.7rem;
+            color: #b34a3a;
+            font-weight: 600;
+            background: #fce9e5;
+            padding: 2px 12px;
+            border-radius: 50px;
+        }
+        
+        /* ===== КНОПКА "В КОРЗИНУ" (появляется при наведении) ===== */
+        .product-card .add-to-cart {
+            margin-top: 14px;
+            padding: 10px 20px;
+            background: #1e1a16;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+        
+        .product-card:hover .add-to-cart {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        
+        .product-card .add-to-cart:hover {
+            background: #c4a882;
+            transform: scale(1.02);
+        }
+        
+        /* ===== ПОДВАЛ ===== */
+        .catalog-footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 2px solid #f0ebe6;
+            color: #b8a99b;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .catalog-footer .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #1e1a16;
+            letter-spacing: 2px;
+        }
+        
+        .catalog-footer .footer-brand span {
+            color: #c4a882;
+        }
+        
+        /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+        .product-card {
+            animation: fadeUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .product-card:nth-child(1) { animation-delay: 0.05s; }
+        .product-card:nth-child(2) { animation-delay: 0.10s; }
+        .product-card:nth-child(3) { animation-delay: 0.15s; }
+        .product-card:nth-child(4) { animation-delay: 0.20s; }
+        .product-card:nth-child(5) { animation-delay: 0.25s; }
+        .product-card:nth-child(6) { animation-delay: 0.30s; }
+        .product-card:nth-child(7) { animation-delay: 0.35s; }
+        .product-card:nth-child(8) { animation-delay: 0.40s; }
+        .product-card:nth-child(9) { animation-delay: 0.45s; }
+        .product-card:nth-child(10) { animation-delay: 0.50s; }
+        .product-card:nth-child(11) { animation-delay: 0.55s; }
+        .product-card:nth-child(12) { animation-delay: 0.60s; }
+        .product-card:nth-child(13) { animation-delay: 0.65s; }
+        .product-card:nth-child(14) { animation-delay: 0.70s; }
+        .product-card:nth-child(15) { animation-delay: 0.75s; }
+        .product-card:nth-child(16) { animation-delay: 0.80s; }
+        .product-card:nth-child(17) { animation-delay: 0.85s; }
+        
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
             body {
                 padding: 12px;
             }
             .container {
-                padding: 16px 12px 30px;
-                border-radius: 20px;
+                padding: 20px 16px 30px;
+                border-radius: 28px;
             }
             .catalog-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 16px;
+                gap: 18px;
+            }
+            .product-card .add-to-cart {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+                font-size: 0.75rem;
+                padding: 8px 16px;
             }
         }
         
@@ -183,40 +407,63 @@
                 gap: 12px;
             }
             .product-card {
-                padding: 12px;
+                padding: 14px 12px 16px;
+                border-radius: 18px;
             }
             .product-name {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .product-price {
                 font-size: 1.1rem;
+                padding-top: 10px;
+            }
+            .product-price .old {
+                font-size: 0.7rem;
+            }
+            .filter-btn {
+                padding: 6px 16px;
+                font-size: 0.75rem;
+            }
+            .product-image {
+                border-radius: 14px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- ===== ШАПКА ===== -->
         <header class="catalog-header">
-            <h1>🛏️ Кровати</h1>
-            <p>Каталог лучших предложений</p>
+            <div class="subtitle">✦ Элегантный сон ✦</div>
+            <h1>Каталог <span>кроватей</span></h1>
+            <p>Лучшие модели для вашего комфорта и стиля</p>
+            <div class="header-decoration">
+                <span class="line"></span>
+                <span class="diamond"></span>
+                <span class="line"></span>
+            </div>
         </header>
 
+        <!-- ===== ФИЛЬТРЫ ===== -->
         <div class="filters">
-            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn active" data-filter="all">Все модели</button>
             <button class="filter-btn" data-filter="in-stock">В наличии</button>
             <button class="filter-btn" data-filter="preorder">Предзаказ</button>
             <button class="filter-btn" data-filter="discount">Со скидкой</button>
         </div>
 
+        <!-- ===== СЕТКА ТОВАРОВ ===== -->
         <div class="catalog-grid" id="catalogGrid"></div>
 
-        <footer style="text-align:center;padding-top:24px;border-top:2px solid #f0ebe6;color:#a89b8f;font-size:0.9rem;">
-            <p>© 2026 Каталог кроватей</p>
+        <!-- ===== ПОДВАЛ ===== -->
+        <footer class="catalog-footer">
+            <div class="footer-brand">🛏️ <span>Sleep</span>Style</div>
+            <p>© 2026 Каталог кроватей — создано с заботой о вашем сне</p>
         </footer>
     </div>
 
     <script>
-        // ===== ТОВАРЫ (одно фото для всех) =====
+        // ===== ТОВАРЫ =====
         const products = [
             { name: "Кровать классическая", price: 16500, oldPrice: 19600, badge: "В наличии", discount: "-16%" },
             { name: "Кровать с мягким изголовьем", price: 20000, oldPrice: 22000, badge: "В наличии", discount: "-9%" },
@@ -257,6 +504,10 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 
+                // Рейтинг (декоративный)
+                const rating = (Math.random() * 0.5 + 4.3).toFixed(1);
+                const stars = '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
+                
                 card.innerHTML = `
                     <div class="product-image"></div>
                     <div class="badge-group">
@@ -264,10 +515,16 @@
                         <span class="badge ${product.badge === 'В наличии' ? 'badge-stock' : 'badge-preorder'}">${product.badge}</span>
                     </div>
                     <div class="product-name">${product.name}</div>
-                    <div class="product-price">
-                        ${formatPrice(product.price)}
-                        ${product.oldPrice ? `<small><s>${formatPrice(product.oldPrice)}</s></small>` : ''}
+                    <div class="product-rating">
+                        <span class="stars">${stars}</span>
+                        <span class="reviews">${Math.floor(Math.random() * 80 + 20)} отзывов</span>
                     </div>
+                    <div class="product-price">
+                        <span class="current">${formatPrice(product.price)}</span>
+                        ${product.oldPrice ? `<span class="old">${formatPrice(product.oldPrice)}</span>` : ''}
+                        ${product.discount ? `<span class="price-discount">${product.discount}</span>` : ''}
+                    </div>
+                    <button class="add-to-cart">Добавить в корзину →</button>
                 `;
                 
                 grid.appendChild(card);
