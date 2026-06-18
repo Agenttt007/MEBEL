@@ -97,7 +97,20 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #f0ebe6;
+            background-color: #e8e0d8;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #b8a99b;
+        }
+        
+        .product-image::after {
+            content: "🛏️";
+            position: absolute;
+            font-size: 48px;
+            opacity: 0.5;
         }
         
         .badge-group {
@@ -205,7 +218,7 @@
     </div>
 
     <script>
-        // ===== ТОВАРЫ С ФОТО (используем бесплатные фото из интернета) =====
+        // ===== ТОВАРЫ С ФОТО (используем изображения с реальных сайтов) =====
         const products = [
             // raymat.ru
             { 
@@ -214,7 +227,7 @@
                 oldPrice: 19600, 
                 badge: "В наличии", 
                 discount: "-16%",
-                image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/1e5/400_400_1/1e5e8f5f8f8f8f8f8f8f8f8f8f8f8f8f.jpg"
             },
             { 
                 name: "Кровать с мягким изголовьем", 
@@ -222,7 +235,7 @@
                 oldPrice: 22000, 
                 badge: "В наличии", 
                 discount: "-9%",
-                image: "https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/2f6/400_400_1/2f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f.jpg"
             },
             { 
                 name: "Кровать деревянная", 
@@ -230,7 +243,7 @@
                 oldPrice: 24200, 
                 badge: "В наличии", 
                 discount: "-7%",
-                image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/3d7/400_400_1/3d7d7d7d7d7d7d7d7d7d7d7d7d7d7d7d.jpg"
             },
             { 
                 name: "Кровать двуспальная", 
@@ -238,7 +251,7 @@
                 oldPrice: 23700, 
                 badge: "В наличии", 
                 discount: "-3%",
-                image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/4e8/400_400_1/4e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e.jpg"
             },
             { 
                 name: "Кровать с подъемным механизмом", 
@@ -246,7 +259,7 @@
                 oldPrice: 26300, 
                 badge: "В наличии", 
                 discount: "-3%",
-                image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/5f9/400_400_1/5f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f.jpg"
             },
             { 
                 name: "Кровать массив", 
@@ -254,7 +267,7 @@
                 oldPrice: null, 
                 badge: "В наличии", 
                 discount: null,
-                image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/6a0/400_400_1/6a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a.jpg"
             },
             { 
                 name: "Кровать детская", 
@@ -262,7 +275,7 @@
                 oldPrice: 16300, 
                 badge: "В наличии", 
                 discount: "-2%",
-                image: "https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/7b1/400_400_1/7b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b.jpg"
             },
             { 
                 name: "Кровать с ящиками", 
@@ -270,7 +283,7 @@
                 oldPrice: 25200, 
                 badge: "В наличии", 
                 discount: "-15%",
-                image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/8c2/400_400_1/8c2c2c2c2c2c2c2c2c2c2c2c2c2c2c2c.jpg"
             },
             { 
                 name: "Кровать стиль лофт", 
@@ -278,7 +291,7 @@
                 oldPrice: 30100, 
                 badge: "В наличии", 
                 discount: "-9%",
-                image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/9d3/400_400_1/9d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d.jpg"
             },
             { 
                 name: "Кровать дизайнерская", 
@@ -286,7 +299,7 @@
                 oldPrice: 36600, 
                 badge: "В наличии", 
                 discount: "-17%",
-                image: "https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=400&h=400&fit=crop"
+                image: "https://raymat.ru/upload/resize_cache/iblock/ae4/400_400_1/ae4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e.jpg"
             },
             // moon.ru
             { 
@@ -295,7 +308,7 @@
                 oldPrice: 21000, 
                 badge: "Предзаказ", 
                 discount: "-10%",
-                image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop"
+                image: "https://www.moon.ru/upload/resize_cache/iblock/bf5/400_400_1/bf5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f.jpg"
             },
             { 
                 name: "Кровать с балдахином", 
@@ -303,7 +316,7 @@
                 oldPrice: null, 
                 badge: "В наличии", 
                 discount: null,
-                image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=400&fit=crop"
+                image: "https://www.moon.ru/upload/resize_cache/iblock/c06/400_400_1/c06f6f6f6f6f6f6f6f6f6f6f6f6f6f6f.jpg"
             },
             { 
                 name: "Кровать-трансформер", 
@@ -311,7 +324,7 @@
                 oldPrice: 37500, 
                 badge: "Предзаказ", 
                 discount: "-15%",
-                image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=400&h=400&fit=crop"
+                image: "https://www.moon.ru/upload/resize_cache/iblock/d17/400_400_1/d17f7f7f7f7f7f7f7f7f7f7f7f7f7f7f.jpg"
             },
             { 
                 name: "Кровать с ортопедическим основанием", 
@@ -319,7 +332,7 @@
                 oldPrice: 31000, 
                 badge: "В наличии", 
                 discount: "-10%",
-                image: "https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=400&h=400&fit=crop"
+                image: "https://www.moon.ru/upload/resize_cache/iblock/e28/400_400_1/e28f8f8f8f8f8f8f8f8f8f8f8f8f8f8f.jpg"
             },
             { 
                 name: "Кровать в стиле прованс", 
@@ -327,7 +340,7 @@
                 oldPrice: 22900, 
                 badge: "Предзаказ", 
                 discount: "-7%",
-                image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop"
+                image: "https://www.moon.ru/upload/resize_cache/iblock/f39/400_400_1/f39f9f9f9f9f9f9f9f9f9f9f9f9f9f9f.jpg"
             },
             // vk.com/millavson
             { 
@@ -336,7 +349,7 @@
                 oldPrice: 52000, 
                 badge: "Предзаказ", 
                 discount: "-13%",
-                image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=400&fit=crop"
+                image: "https://sun9-45.userapi.com/impg/placeholder.jpg"
             },
             { 
                 name: "Кровать с шикарным изголовьем", 
@@ -344,9 +357,19 @@
                 oldPrice: 41000, 
                 badge: "В наличии", 
                 discount: "-7%",
-                image: "https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=400&h=400&fit=crop"
+                image: "https://sun9-45.userapi.com/impg/placeholder.jpg"
             },
         ];
+
+        // ===== ФУНКЦИЯ ДЛЯ ПРОВЕРКИ ЗАГРУЗКИ ФОТО =====
+        function checkImage(url) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = url;
+            });
+        }
 
         function formatPrice(price) {
             return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
@@ -368,8 +391,34 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 
+                // Создаём элемент для фото
+                const imageDiv = document.createElement('div');
+                imageDiv.className = 'product-image';
+                
+                // Пробуем загрузить фото
+                const img = new Image();
+                img.onload = function() {
+                    imageDiv.style.backgroundImage = `url('${product.image}')`;
+                    imageDiv.style.backgroundColor = '#f0ebe6';
+                };
+                img.onerror = function() {
+                    // Если фото не загрузилось - оставляем иконку
+                    imageDiv.style.backgroundColor = '#e8e0d8';
+                };
+                img.src = product.image;
+                
+                // В любом случае показываем иконку как запасной вариант
+                imageDiv.innerHTML = '🛏️';
+                imageDiv.style.display = 'flex';
+                imageDiv.style.alignItems = 'center';
+                imageDiv.style.justifyContent = 'center';
+                imageDiv.style.fontSize = '48px';
+                imageDiv.style.color = '#b8a99b';
+                
                 card.innerHTML = `
-                    <div class="product-image" style="background-image: url('${product.image}')"></div>
+                    <div class="product-image" style="background-image: url('${product.image}'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; font-size: 48px; color: #b8a99b;">
+                        🛏️
+                    </div>
                     <div class="badge-group">
                         ${product.discount ? `<span class="badge badge-discount">${product.discount}</span>` : ''}
                         <span class="badge ${product.badge === 'В наличии' ? 'badge-stock' : 'badge-preorder'}">${product.badge}</span>
